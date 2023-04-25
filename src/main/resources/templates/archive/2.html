@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update User</title>
+</head>
+<body>
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit user</h3>
+                <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+            </div>
+            <hr>
+            <div class="modal-body">
+                <form th:method="patch" th:action="@{{id} (id=${person.getId()})}" th:object="${person}" >
+                    <input type="hidden" name="_method" value="patch" />
+                    <table>
+                        <tr><td align="center"><label for="id"><b>ID</b></label></td></tr>
+                        <tr><td><input readonly type="number" th:field="*{id}" id="id" ></td></tr>
+                        <tr><td align="center"><label  for="name1"><b>First name</b></label></td></tr>
+                        <tr><td><input type="text" th:field="*{username}" id="name1" placeholder="name"></td></tr>
+                        <tr><td align="center"><label  for="lastName1"><b>Last name</b></label></td></tr>
+                        <tr><td><input type="text" th:field="*{lastName}" id="lastName1" placeholder="lastname"></td></tr>
+                        <tr><td align="center"><label  for="password1"><b>Password</b></label></td></tr>
+                        <tr><td><input type="password" th:field="*{password}" id="password1" placeholder="password"></td></tr>
+                        <tr><td align="center"><label for="role1"><b>Role</b></label></td></tr>
+                        <tr>
+                            <td>
+                                <select  class="form-control" id="role1" name="role1" >
+                                    <option th:value= "'ROLE_USER'" th:text="USER"></option>
+                                    <option th:value="'ROLE_ADMIN'" th:text="ADMIN"></option>
+                                </select>
+                            </td>
+                        </tr>
+                </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!-- <tr><td><input type="submit" value="edit" style="background-color: cornflowerblue"></td></tr>-->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+                <button type="button" class="btn btn-primary" style="background-color: cornflowerblue">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
